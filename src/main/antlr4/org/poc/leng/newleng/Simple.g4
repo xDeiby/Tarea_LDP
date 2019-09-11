@@ -24,7 +24,7 @@ type_data:    INT
 			| FLOAT 
 			| BOOL;
 
-date:     NUMBER 
+date:   NUMBER 
 		| FLOTANTE 
 		| BOOLEANO
 		| ID;
@@ -80,9 +80,10 @@ DIV		: '/';
 //RANGOS DATOS
 fragment FALSE	: 'false';
 fragment TRUE	: 'true';
-fragment NUMBER	: [0,9];
+fragment NUM	: [0,9];
 fragment DOT	: '.';
 
+NUMBER		: NUM+;
 FLOTANTE	: NUMBER DOT NUMBER;
 BOOLEANO	: TRUE | FALSE;
 
