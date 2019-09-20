@@ -8,130 +8,119 @@
 
 grammar Simple;
 
-//############################################################## ANALIZADOR SINTACTICO #####################################################################################
 
-program	: START sentences* END;
+//s 		: operation EOF					
+//		;
 
-sentences: 	  decla 
-			| assign_var
-			| sent_logic
-			| for_loop
-			| while_loop
-			| read_op
-			| writte_op;
-			
-type_data:    INT 
-			| FLOAT 
-			| BOOL;
+program	: start_block segments*	end_block;
 
-date:   NUMBER 
-		| FLOTANTE 
-		| BOOLEANO
+segments:	  declaration
+			| assignation
+			| block_logic
+			| while_loop;
+
+declaration		: type_date ID
+				| type_date ID ASSIG date;
+
+assignation	: ID ASSIG date;
+
+date	: NUMBER
+		| FLOTANTE
+		| BOOL
 		| ID;
 
-decla:    type_data ID 
-		| type_data ID ASSIG operation;
+type_date	: INT
+			| FLOAT
+			| BOOL;
+			
+if_block: IF condition ;
+			
 
-assign_var	: ID ASSIG operation;
+start_block : START;
 
-operation: 	  operation SUM operation
-			| operation REST operation
-			| operation MULT operation
-			| operation DIV operation
-			| PAR_L operation PAR_R
-			| date;
+end_block	: END;
 
-sent_logic: IF condition KEY_L sentences* KEY_R 
-			(ELIF condition KEY_L sentences* KEY_R)* 
-			(ELSE condition KEY_L sentences* KEY_R)?
-			ENDIF;
-
-
-
-condition: 	  condition MAY_Q condition
-			| condition MEN_Q condition
-			| condition IGUAL condition
+condition	: LPAR condition RPAR
 			| condition AND condition
 			| condition OR condition
-			| PAR_L condition PAR_R
+			| condition DIST condition
+			| condition IGUAL condition
+			| condition MAY condition
+			| condition MEN condition
 			| date;
-			
-while_loop	: WHILE condition KEY_L sentences* KEY_R ENDWH;
 
-for_loop	: FOR PAR_L decla DELIM date DELIM date PAR_R KEY_L sentences* KEY_R ENDFOR;
+// if, else if, else
+block_logic	: (start_if | start_else) segments* end_if ;
 
-writte_op	: WRITTE PAR_L (operation | condition) PAR_R;
+start_if	: IF_CON condition LKEY;
 
-read_op		: READ PAR_L ID* PAR_R;
-			
-//#####################################################################################################################################################################
+start_else	: ELSE LKEY;
 
-//############################################################## ANALIZADOR LEXICO #####################################################################################
+end_if		: RKEY;
 
-START	: 'inicio';
-END		: 'fin';
+// while
+while_loop	: start_wh segments* end_wh;
 
-//Operaciones matematicas
-SUM		: '+';
-REST	: '-';
-MULT	: '*';
-DIV		: '/';
+start_wh	: WHILE condition LKEY;
 
-//RANGOS DATOS
-fragment FALSE	: 'false';
-fragment TRUE	: 'true';
-fragment NUM	: [0,9];
-fragment DOT	: '.';
-
-NUMBER		: NUM+;
-FLOTANTE	: NUMBER DOT NUMBER;
-BOOLEANO	: TRUE | FALSE;
+end_wh		: RKEY ENDWH;
 
 
-//Tipos de variables
-INT		: 'entero';
-FLOAT	: 'real';
-BOOL	: 'logico';
+
+// ############################################################# LEXICO #################################################################
+//Estructura general
+START: 'inicio';
+END: 'fin';
+
+fragment TRUE		: 'v'		;
+fragment FALSE		: 'f'		;
+fragment NUM		: [0-9]		;
+fragment DOT		: '.'		;
+fragment IF			: 'si'		;
+fragment ELIF		: 'sino_si'	;
+
+//Tipos de datos
+INT		: 'entero'	;
+FLOAT	: 'real'		;
+BOOL	: 'logico'	;
+
+//Definicion de datos
+NUMBER		: NUM+				;
+FLOTANTE 	: NUMBER DOT NUMBER	;
+BOOLEAN 	: TRUE | FALSE		;
 
 //Asignacion
-ASSIG	: '<-';
+ASSIG:	'<-';
+
+//Estructuras Logicas
+IF_CON	: IF | ELIF;
+ELSE	: 'sino';
+ENDIF	: 'fin_si';
+
+//Parentesis/Corchetes
+LPAR : '(';
+RPAR : ')';
+LKEY : '{';
+RKEY : '}';
 
 //Operadores Logicos
-MAY_Q	: '>';
-MEN_Q	: '<';
-IGUAL	: '=';
-
 AND		: 'and';
 OR		: 'or';
 
-//LLaves y parentesis
-PAR_L	: '(';
-PAR_R	: ')';
+//Comparadores
+DIST	: '<>';
+IGUAL	: '=';
+MAY		: '>';
+MEN		: '<';
 
-KEY_L	: '{';
-KEY_R	: '{';
-
-//Estructuras Logicas
-IF		: 'si';
-ELSE	: 'sino';
-ELIF	: 'sino_si';
-ENDIF	: 'fin_si';
-
-//Estructuras repetitivas
-FOR		: 'para';
-ENDFOR	: 'fin_para';
-DELIM	: ';';    //Delimitador de datos: para(x<-0;6;1) (inicial,limite,aumento)
-
+//Estructuras Repetitivas
 WHILE	: 'mientras';
 ENDWH	: 'fin_mientras';
+FOR		: 'para';
+ENDFR	: 'fin_para';
 
-//Lectura y Escritura
-READ	: 'leer';
-WRITTE	: 'escribir';
 
 
 ID		: [a-zA-Z]+						;
 COMMENT	:  '!' .*? '\r'? '\n' -> skip	;
 WS 		: [ \t\r\n]+ -> skip 			;
-
-//############################################################## ANALIZADOR LEXICO #####################################################################################

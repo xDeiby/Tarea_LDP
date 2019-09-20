@@ -10,7 +10,7 @@ public class Main {
 	private static final String EXTENSION = "smp";
 
 	public static void main(String[] args) throws IOException {
-		String program = args.length > 1 ? args[1] : "test/test2." + EXTENSION;
+		String program = args.length > 1 ? args[1] : "test/test." + EXTENSION;
 
 		System.out.println("Interpreting file " + program);
 

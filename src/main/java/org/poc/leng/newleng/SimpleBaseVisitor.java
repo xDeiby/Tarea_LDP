@@ -25,28 +25,35 @@ public class SimpleBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitWritte_op(@NotNull SimpleParser.Writte_opContext ctx) { return visitChildren(ctx); }
+	@Override public T visitIf_block(@NotNull SimpleParser.If_blockContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitType_data(@NotNull SimpleParser.Type_dataContext ctx) { return visitChildren(ctx); }
+	@Override public T visitStart_else(@NotNull SimpleParser.Start_elseContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitSent_logic(@NotNull SimpleParser.Sent_logicContext ctx) { return visitChildren(ctx); }
+	@Override public T visitEnd_wh(@NotNull SimpleParser.End_whContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitSentences(@NotNull SimpleParser.SentencesContext ctx) { return visitChildren(ctx); }
+	@Override public T visitAssignation(@NotNull SimpleParser.AssignationContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitStart_if(@NotNull SimpleParser.Start_ifContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -60,7 +67,7 @@ public class SimpleBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDecla(@NotNull SimpleParser.DeclaContext ctx) { return visitChildren(ctx); }
+	@Override public T visitBlock_logic(@NotNull SimpleParser.Block_logicContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -74,14 +81,28 @@ public class SimpleBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitRead_op(@NotNull SimpleParser.Read_opContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDeclaration(@NotNull SimpleParser.DeclarationContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAssign_var(@NotNull SimpleParser.Assign_varContext ctx) { return visitChildren(ctx); }
+	@Override public T visitEnd_block(@NotNull SimpleParser.End_blockContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitStart_block(@NotNull SimpleParser.Start_blockContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitSegments(@NotNull SimpleParser.SegmentsContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -95,12 +116,19 @@ public class SimpleBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFor_loop(@NotNull SimpleParser.For_loopContext ctx) { return visitChildren(ctx); }
+	@Override public T visitStart_wh(@NotNull SimpleParser.Start_whContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOperation(@NotNull SimpleParser.OperationContext ctx) { return visitChildren(ctx); }
+	@Override public T visitEnd_if(@NotNull SimpleParser.End_ifContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitType_date(@NotNull SimpleParser.Type_dateContext ctx) { return visitChildren(ctx); }
 }

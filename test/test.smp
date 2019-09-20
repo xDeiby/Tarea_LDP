@@ -1,8 +1,24 @@
 inicio
 	entero x
+	x <- 9
 	entero y
-	entero z
-	escribir(x y z)
-	para(x
+	y <- x
+	si (5 <> 1 ) {
+		x <- 3
+	}
+	sino_si (x>2){
+		x <- 4
+	}
+	sino_si (x>2){
+		x <- 4
+	}
+	sino {
+		x <- y
+		mientras (y>4){
+			x <- 34
+		}
+	}
+	fin_si
+	
+	real z
 fin
-

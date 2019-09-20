@@ -18,29 +18,35 @@ public interface SimpleVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDate(@NotNull SimpleParser.DateContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SimpleParser#writte_op}.
+	 * Visit a parse tree produced by {@link SimpleParser#if_block}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitWritte_op(@NotNull SimpleParser.Writte_opContext ctx);
+	T visitIf_block(@NotNull SimpleParser.If_blockContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SimpleParser#type_data}.
+	 * Visit a parse tree produced by {@link SimpleParser#start_else}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitType_data(@NotNull SimpleParser.Type_dataContext ctx);
+	T visitStart_else(@NotNull SimpleParser.Start_elseContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SimpleParser#sent_logic}.
+	 * Visit a parse tree produced by {@link SimpleParser#end_wh}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSent_logic(@NotNull SimpleParser.Sent_logicContext ctx);
+	T visitEnd_wh(@NotNull SimpleParser.End_whContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SimpleParser#sentences}.
+	 * Visit a parse tree produced by {@link SimpleParser#assignation}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSentences(@NotNull SimpleParser.SentencesContext ctx);
+	T visitAssignation(@NotNull SimpleParser.AssignationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SimpleParser#start_if}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStart_if(@NotNull SimpleParser.Start_ifContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SimpleParser#while_loop}.
 	 * @param ctx the parse tree
@@ -48,11 +54,11 @@ public interface SimpleVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitWhile_loop(@NotNull SimpleParser.While_loopContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SimpleParser#decla}.
+	 * Visit a parse tree produced by {@link SimpleParser#block_logic}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDecla(@NotNull SimpleParser.DeclaContext ctx);
+	T visitBlock_logic(@NotNull SimpleParser.Block_logicContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SimpleParser#program}.
 	 * @param ctx the parse tree
@@ -60,17 +66,29 @@ public interface SimpleVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProgram(@NotNull SimpleParser.ProgramContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SimpleParser#read_op}.
+	 * Visit a parse tree produced by {@link SimpleParser#declaration}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitRead_op(@NotNull SimpleParser.Read_opContext ctx);
+	T visitDeclaration(@NotNull SimpleParser.DeclarationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SimpleParser#assign_var}.
+	 * Visit a parse tree produced by {@link SimpleParser#end_block}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAssign_var(@NotNull SimpleParser.Assign_varContext ctx);
+	T visitEnd_block(@NotNull SimpleParser.End_blockContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SimpleParser#start_block}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStart_block(@NotNull SimpleParser.Start_blockContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SimpleParser#segments}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSegments(@NotNull SimpleParser.SegmentsContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SimpleParser#condition}.
 	 * @param ctx the parse tree
@@ -78,15 +96,21 @@ public interface SimpleVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitCondition(@NotNull SimpleParser.ConditionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SimpleParser#for_loop}.
+	 * Visit a parse tree produced by {@link SimpleParser#start_wh}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFor_loop(@NotNull SimpleParser.For_loopContext ctx);
+	T visitStart_wh(@NotNull SimpleParser.Start_whContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SimpleParser#operation}.
+	 * Visit a parse tree produced by {@link SimpleParser#end_if}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOperation(@NotNull SimpleParser.OperationContext ctx);
+	T visitEnd_if(@NotNull SimpleParser.End_ifContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SimpleParser#type_date}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitType_date(@NotNull SimpleParser.Type_dateContext ctx);
 }
