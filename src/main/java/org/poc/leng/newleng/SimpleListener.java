@@ -159,6 +159,26 @@ public interface SimpleListener extends ParseTreeListener {
 	 */
 	void exitStart_wh(@NotNull SimpleParser.Start_whContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SimpleParser#rango}.
+	 * @param ctx the parse tree
+	 */
+	void enterRango(@NotNull SimpleParser.RangoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SimpleParser#rango}.
+	 * @param ctx the parse tree
+	 */
+	void exitRango(@NotNull SimpleParser.RangoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SimpleParser#start_for}.
+	 * @param ctx the parse tree
+	 */
+	void enterStart_for(@NotNull SimpleParser.Start_forContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SimpleParser#start_for}.
+	 * @param ctx the parse tree
+	 */
+	void exitStart_for(@NotNull SimpleParser.Start_forContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SimpleParser#end_if}.
 	 * @param ctx the parse tree
 	 */
@@ -168,6 +188,36 @@ public interface SimpleListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitEnd_if(@NotNull SimpleParser.End_ifContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SimpleParser#for_loop}.
+	 * @param ctx the parse tree
+	 */
+	void enterFor_loop(@NotNull SimpleParser.For_loopContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SimpleParser#for_loop}.
+	 * @param ctx the parse tree
+	 */
+	void exitFor_loop(@NotNull SimpleParser.For_loopContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SimpleParser#operation}.
+	 * @param ctx the parse tree
+	 */
+	void enterOperation(@NotNull SimpleParser.OperationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SimpleParser#operation}.
+	 * @param ctx the parse tree
+	 */
+	void exitOperation(@NotNull SimpleParser.OperationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SimpleParser#end_for}.
+	 * @param ctx the parse tree
+	 */
+	void enterEnd_for(@NotNull SimpleParser.End_forContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SimpleParser#end_for}.
+	 * @param ctx the parse tree
+	 */
+	void exitEnd_for(@NotNull SimpleParser.End_forContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SimpleParser#type_date}.
 	 * @param ctx the parse tree

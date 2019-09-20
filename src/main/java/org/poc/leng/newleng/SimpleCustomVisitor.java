@@ -35,7 +35,7 @@ public class SimpleCustomVisitor extends SimpleBaseVisitor<Object>{
         if (!_vars.containsKey(id)) {
         		var_type = getVarType(var_type);
         		_vars.put(id, var_type);
-        		
+        		        		
 	        	System.out.println(String.format("\t%s %s;", var_type, id));
                 
         } else {
@@ -141,6 +141,23 @@ public class SimpleCustomVisitor extends SimpleBaseVisitor<Object>{
 		return null;
 	}
 	
+	@Override
+	public Object visitStart_for(SimpleParser.Start_forContext ctx) {
+		String range = ctx.rango().getText();
+		range = replace(range);
+		
+		System.out.println(String.format("\tfor %s{",range));
+		
+		return null;
+	}
+	
+	
+	public Object visitEnd_for(SimpleParser.End_forContext ctx) {
+		System.out.println("\t}");
+		
+		return null;
+	}
+	
 	
 	private String getVarType(String var_type) {
 		if(var_type.equals("entero") || var_type.equals("logico"))
@@ -165,6 +182,7 @@ public class SimpleCustomVisitor extends SimpleBaseVisitor<Object>{
 		stat.replace("<>", "!=");
 		stat.replace("AND", "&&");
 		stat.replace("OR", "&&");
+		stat.replaceAll(",", ";");
 		
 		return stat;
 	}

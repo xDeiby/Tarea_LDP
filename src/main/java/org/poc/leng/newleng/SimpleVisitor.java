@@ -102,11 +102,41 @@ public interface SimpleVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStart_wh(@NotNull SimpleParser.Start_whContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link SimpleParser#rango}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRango(@NotNull SimpleParser.RangoContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SimpleParser#start_for}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStart_for(@NotNull SimpleParser.Start_forContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link SimpleParser#end_if}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitEnd_if(@NotNull SimpleParser.End_ifContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SimpleParser#for_loop}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFor_loop(@NotNull SimpleParser.For_loopContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SimpleParser#operation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOperation(@NotNull SimpleParser.OperationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SimpleParser#end_for}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEnd_for(@NotNull SimpleParser.End_forContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SimpleParser#type_date}.
 	 * @param ctx the parse tree

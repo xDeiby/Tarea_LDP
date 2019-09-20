@@ -1,11 +1,5 @@
-//grammar Simple;
-
-//r  : 'hello' ID ;         // match keyword hello followed by an identifier
-
-//ID : [a-z]+ ;             // match lower-case identifiers
-
-//WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
-
+// Lenguaje SEMANTICO en SimpleCustomVisitor.java
+//################################################ SINTACTICO ##########################################################################
 grammar Simple;
 
 
@@ -14,15 +8,17 @@ grammar Simple;
 
 program	: start_block segments*	end_block;
 
-segments:	  declaration
+segments	: declaration
 			| assignation
 			| block_logic
-			| while_loop;
+			| while_loop
+			| for_loop;
 
 declaration		: type_date ID
-				| type_date ID ASSIG date;
+				| type_date assignation;
 
-assignation	: ID ASSIG date;
+assignation		: ID ASSIG date
+				| ID ASSIG operation;
 
 date	: NUMBER
 		| FLOTANTE
@@ -40,6 +36,13 @@ start_block : START;
 
 end_block	: END;
 
+operation	: LPAR operation RPAR
+			| operation SUM operation
+			| operation REST operation
+			| operation MULT operation
+			| operation DIV operation
+			| date;
+
 condition	: LPAR condition RPAR
 			| condition AND condition
 			| condition OR condition
@@ -49,7 +52,9 @@ condition	: LPAR condition RPAR
 			| condition MEN condition
 			| date;
 
+
 // if, else if, else
+
 block_logic	: (start_if | start_else) segments* end_if ;
 
 start_if	: IF_CON condition LKEY;
@@ -58,12 +63,26 @@ start_else	: ELSE LKEY;
 
 end_if		: RKEY;
 
+
 // while
+
 while_loop	: start_wh segments* end_wh;
 
 start_wh	: WHILE condition LKEY;
 
 end_wh		: RKEY ENDWH;
+
+
+// For
+
+for_loop	: start_for segments* end_for;
+
+rango		: LPAR assignation POINT condition POINT assignation RPAR;
+
+start_for	: FOR rango LKEY;
+end_for		: RKEY ENDFR;
+
+// Lectura y escritura
 
 
 
@@ -118,6 +137,14 @@ WHILE	: 'mientras';
 ENDWH	: 'fin_mientras';
 FOR		: 'para';
 ENDFR	: 'fin_para';
+POINT	: ',';
+
+// Operadores Matematicos
+
+SUM		: '+';
+REST	: '-';
+MULT	: '*';
+DIV		: '/';
 
 
 
