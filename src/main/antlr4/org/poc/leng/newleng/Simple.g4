@@ -12,13 +12,14 @@ segments	: declaration
 			| assignation
 			| block_logic
 			| while_loop
-			| for_loop;
-
+			| for_loop
+			| op_print
+			| op_read;
+			
 declaration		: type_date ID
 				| type_date assignation;
-
-assignation		: ID ASSIG date
-				| ID ASSIG operation;
+				
+assignation		: ID ASSIG operation;
 
 date	: NUMBER
 		| FLOTANTE
@@ -28,9 +29,7 @@ date	: NUMBER
 type_date	: INT
 			| FLOAT
 			| BOOL;
-			
-if_block: IF condition ;
-			
+						
 
 start_block : START;
 
@@ -70,7 +69,7 @@ while_loop	: start_wh segments* end_wh;
 
 start_wh	: WHILE condition LKEY;
 
-end_wh		: RKEY ENDWH;
+end_wh		: RKEY;
 
 
 // For
@@ -80,10 +79,13 @@ for_loop	: start_for segments* end_for;
 rango		: LPAR assignation POINT condition POINT assignation RPAR;
 
 start_for	: FOR rango LKEY;
-end_for		: RKEY ENDFR;
+end_for		: RKEY;
 
 // Lectura y escritura
 
+op_print	: PRINT operation;
+
+op_read		: READ LPAR ID RPAR;
 
 
 // ############################################################# LEXICO #################################################################
@@ -114,7 +116,6 @@ ASSIG:	'<-';
 //Estructuras Logicas
 IF_CON	: IF | ELIF;
 ELSE	: 'sino';
-ENDIF	: 'fin_si';
 
 //Parentesis/Corchetes
 LPAR : '(';
@@ -134,9 +135,7 @@ MEN		: '<';
 
 //Estructuras Repetitivas
 WHILE	: 'mientras';
-ENDWH	: 'fin_mientras';
 FOR		: 'para';
-ENDFR	: 'fin_para';
 POINT	: ',';
 
 // Operadores Matematicos
@@ -145,6 +144,12 @@ SUM		: '+';
 REST	: '-';
 MULT	: '*';
 DIV		: '/';
+
+//Lectura y Escritura
+
+PRINT	: 'escribir';
+READ	: 'leer';
+
 
 
 

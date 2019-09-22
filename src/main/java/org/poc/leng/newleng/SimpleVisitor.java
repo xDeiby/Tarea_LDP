@@ -18,12 +18,6 @@ public interface SimpleVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDate(@NotNull SimpleParser.DateContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SimpleParser#if_block}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitIf_block(@NotNull SimpleParser.If_blockContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link SimpleParser#start_else}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -114,11 +108,23 @@ public interface SimpleVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStart_for(@NotNull SimpleParser.Start_forContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link SimpleParser#op_read}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOp_read(@NotNull SimpleParser.Op_readContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link SimpleParser#end_if}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitEnd_if(@NotNull SimpleParser.End_ifContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SimpleParser#op_print}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOp_print(@NotNull SimpleParser.Op_printContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SimpleParser#for_loop}.
 	 * @param ctx the parse tree

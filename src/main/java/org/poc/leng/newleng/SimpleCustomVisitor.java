@@ -49,47 +49,32 @@ public class SimpleCustomVisitor extends SimpleBaseVisitor<Object>{
 	@Override
 	public Object visitAssignation(SimpleParser.AssignationContext ctx) {
 		String id = ctx.ID().getText();
-		String date = ctx.date().getText();
+		String date = ctx.operation().getText();
 		
 		System.out.println(String.format("\t%s = %s;", id,date));
 		return null;
 	}
 	
-//
-//	@Override
-//	public Object visitRead(SimpleParser.ReadContext ctx) {
-//		String id = ctx.ID().getText();
-//		if (_vars.containsKey(id)) {
-//			System.out.println(String.format("\tscanf(\"%s\", &%s);", getVarTypeMode(_vars.get(id)), id));
-//		} else {
-//    			throw new IllegalArgumentException("Variable '" + id + "' doesn't defined");
-//		}
-//		return null; 
-//	}
-//	
-//	@Override
-//	public Object visitPrint(SimpleParser.PrintContext ctx) {
-//		if (ctx.ID().size() > 0) {
-//			String id, format = "", args = "";
-//			for (int i = 0; i < ctx.ID().size(); i++) {
-//				id = ctx.ID(i).getText();
-//				if (_vars.containsKey(id)) {
-//					format += getVarTypeMode(_vars.get(id)) + " ";
-//					args += id + ", ";
-//				} else {
-//	    				throw new IllegalArgumentException("Variable '" + id + "' doesn't defined");
-//				}
-//			}
-//			System.out.println(String.format("\tprintf(\"%s\", %s);", format.substring(0, format.length() - 1), args.substring(0, args.length() - 2)));
-//		} else {
-//			String text = ctx.STRING().getText();
-//			if(text != null) {
-//				System.out.println(String.format("\tprintf(%s);", text));
-//			}
-//		}
-//		return null;  
-//	}
-//	
+
+	@Override
+	public Object visitOp_read(SimpleParser.Op_readContext ctx) {
+		String id = ctx.ID().getText();
+		String format = "%s";
+		System.out.println(String.format("\tscanf('%s', &%s);",format ,id));
+		return null; 
+	}
+	
+	@Override
+	public Object visitOp_print(SimpleParser.Op_printContext ctx) {
+		String expresion = ctx.operation().getText();
+		String format = "%s";
+		expresion = replace(expresion);
+		
+		System.out.println(String.format("\tprintf('%s ', %s);",format, expresion));
+		
+		return null;  
+	}
+	
 	@Override
 	public Object visitStart_if(SimpleParser.Start_ifContext ctx) {
 		String conditions = ctx.condition().getText();
@@ -168,21 +153,23 @@ public class SimpleCustomVisitor extends SimpleBaseVisitor<Object>{
 			return "char";
 	}
 //	
-//	private String getVarTypeMode(String var_type) {
-//		if(var_type.equals("int"))
-//			return "%d";
-//		else if(var_type.equals("real"))
-//			return "%f";
-//		else
-//			return "%s";
-//	}
+	private String getVarTypeMode(String var_type) {
+		if(var_type.equals("int"))
+			return "%d";
+		else if(var_type.equals("real"))
+			return "%f";
+		else
+			return "%s";
+	}
 //	
 	private String replace(String stat) {
-		stat.replaceAll("=", "==");
-		stat.replace("<>", "!=");
-		stat.replace("AND", "&&");
-		stat.replace("OR", "&&");
-		stat.replaceAll(",", ";");
+		stat = stat.replaceAll("=", "==");
+		stat = stat.replaceAll("<>", "!=");
+		stat = stat.replaceAll("and", "&&");
+		stat = stat.replaceAll("or", "||");
+		stat = stat.replaceAll(",", ";");
+		stat = stat.replaceAll("<-", "=");
+
 		
 		return stat;
 	}

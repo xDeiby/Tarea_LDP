@@ -1,26 +1,28 @@
 inicio
 	entero x
-	x <- 9
 	entero y
-	y <- x
-	si (5 <> 1 ) {
+	
+	x <- 9
+	y <- 3
+	si (x <> y ) {
 		x <- 3
 	}
-	sino_si (x>2){
+	sino_si (x = y){
 		x <- 4
 	}
-	sino_si (x>2){
+	sino_si (x < y and (x>0 or y>0)){
 		x <- 4
 	}
 	sino {
-		x <- y
+		y <- 10
 		mientras (y>4){
-			x <- 34
+			y <- y - 1
 		}
 	}
-
-	para(x<-1, x>10, x<-x+2){
-	
+	entero i
+	para(i<-1, i>10, i<-i+2){
+		escribir(i)
 	}	
 	real z
+	leer(z)
 fin

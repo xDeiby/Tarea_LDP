@@ -19,16 +19,6 @@ public interface SimpleListener extends ParseTreeListener {
 	 */
 	void exitDate(@NotNull SimpleParser.DateContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SimpleParser#if_block}.
-	 * @param ctx the parse tree
-	 */
-	void enterIf_block(@NotNull SimpleParser.If_blockContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SimpleParser#if_block}.
-	 * @param ctx the parse tree
-	 */
-	void exitIf_block(@NotNull SimpleParser.If_blockContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link SimpleParser#start_else}.
 	 * @param ctx the parse tree
 	 */
@@ -179,6 +169,16 @@ public interface SimpleListener extends ParseTreeListener {
 	 */
 	void exitStart_for(@NotNull SimpleParser.Start_forContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SimpleParser#op_read}.
+	 * @param ctx the parse tree
+	 */
+	void enterOp_read(@NotNull SimpleParser.Op_readContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SimpleParser#op_read}.
+	 * @param ctx the parse tree
+	 */
+	void exitOp_read(@NotNull SimpleParser.Op_readContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SimpleParser#end_if}.
 	 * @param ctx the parse tree
 	 */
@@ -188,6 +188,16 @@ public interface SimpleListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitEnd_if(@NotNull SimpleParser.End_ifContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SimpleParser#op_print}.
+	 * @param ctx the parse tree
+	 */
+	void enterOp_print(@NotNull SimpleParser.Op_printContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SimpleParser#op_print}.
+	 * @param ctx the parse tree
+	 */
+	void exitOp_print(@NotNull SimpleParser.Op_printContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SimpleParser#for_loop}.
 	 * @param ctx the parse tree

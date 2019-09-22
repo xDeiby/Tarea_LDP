@@ -29,18 +29,6 @@ public class SimpleBaseListener implements SimpleListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIf_block(@NotNull SimpleParser.If_blockContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitIf_block(@NotNull SimpleParser.If_blockContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterStart_else(@NotNull SimpleParser.Start_elseContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -221,6 +209,18 @@ public class SimpleBaseListener implements SimpleListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterOp_read(@NotNull SimpleParser.Op_readContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOp_read(@NotNull SimpleParser.Op_readContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterEnd_if(@NotNull SimpleParser.End_ifContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -228,6 +228,18 @@ public class SimpleBaseListener implements SimpleListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitEnd_if(@NotNull SimpleParser.End_ifContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOp_print(@NotNull SimpleParser.Op_printContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOp_print(@NotNull SimpleParser.Op_printContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
