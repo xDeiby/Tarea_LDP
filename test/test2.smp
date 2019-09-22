@@ -1,22 +1,24 @@
 inicio
-	entero x
-	entero y
-	entero z
+	boleano b
+	intero x
+	real p
 	
-	si (x = y) { 
-		x <- 0
-		y <- 1
-	} sino_si (x > y) {
-		x <- 1
-		z <- 1
-	} sino_si (x <> z) {
-		x <- 0
-		y <- z
-	} sino {
-		x <- 1
-		z <- y
+	x <- (10/9+8*1)
+	p <- 2-3*5
+	
+	leer(z)
+
+	si(b){
+		escribir(p+x)
 	}
-	fin_si
-	escribir(x y z)
-	escribir("fin del programa")
+	sino{
+		entero z
+		para(z<-0, z<x, z<-z+1){
+			escribir(z)
+		}
+	}
+	
+	
+
+	
 fin
